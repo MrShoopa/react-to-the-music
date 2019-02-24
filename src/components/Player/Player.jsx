@@ -11,8 +11,8 @@ class Player extends React.Component {
             playStatus: 'play',
             currentTime: 0
         }
-
     };
+
     updateTime(timestamp) {
         timestamp = Math.floor(timestamp);
         this.setState({ currentTime: timestamp });
@@ -66,13 +66,13 @@ class Player extends React.Component {
 }
 Player.defaultProps = {
     track: {
-        name: "We Were Young",
-        artist: "Odesza",
-        album: "Summer's Gone",
-        year: 2012,
-        artwork: "https://funkadelphia.files.wordpress.com/2012/09/odesza-summers-gone-lp.jpg",
-        duration: 192,
-        source: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/wwy.mp3"
+        name: "Angel Voices",
+        artist: "VIRTUAL SELF",
+        album: "",
+        year: 2018,
+        artwork: "https://m.media-amazon.com/images/I/71VJ6MxpN8L._SS500_.jpg",
+        duration: 392,
+        source: "https://docs.google.com/uc?id=1TD5rZhiKZzC7-uwDCaB9EABeZkGEFQkQ&export=download"
     }
 };
 
