@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
+
 import './Player.scss'
 
 // Player
@@ -13,17 +16,17 @@ class Player extends React.Component {
         }
     };
 
-    updateTime(timestamp) {
+    updateTime = (timestamp) => {
         timestamp = Math.floor(timestamp);
         this.setState({ currentTime: timestamp });
     };
-    updateScrubber(percent) {
+    updateScrubber = (percent) => {
         // Set scrubber width
         let innerScrubber = document.querySelector('.Scrubber-Progress');
         innerScrubber.style['width'] = percent;
     };
-    togglePlay() {
-        console.log(this)
+    togglePlay = () => {
+        //console.log(this)
         let status = this.state.playStatus;
         let audio = document.getElementById('audio');
         if (status === 'play') {
@@ -46,15 +49,15 @@ class Player extends React.Component {
         this.setState({ playStatus: status });
 
     }
-    render() {
+    render = () => {
         return (
             <div className="Player">
                 <div className="Background" style={{ 'backgroundImage': 'url(' + this.props.track.artwork + ')' }}></div>
-                <div className="Header"><div className="Title">Now playing</div></div>
+                <div className="Header"><div className="Title">Current track</div></div>
                 <div className="Artwork" style={{ 'backgroundImage': 'url(' + this.props.track.artwork + ')' }}></div>
                 <TrackInformation track={this.props.track} />
-                <Scrubber />
-                <Controls isPlaying={this.state.playStatus} onClick={this.togglePlay.bind(this)} />
+                <Scrubber isPlaying={this.state.playStatus} />
+                <Controls isPlaying={this.state.playStatus} onClick={this.togglePlay} />
                 <Timestamps duration={this.props.track.duration} currentTime={this.state.currentTime} />
                 <audio id="audio">
                     <source src={this.props.track.source} />
@@ -90,9 +93,13 @@ class TrackInformation extends React.Component {
 
 class Scrubber extends React.Component {
     render() {
+        let className;
+        className = this.props.isPlaying === 'pause' ?
+            'Scrubber-Progress play' : 'Scrubber-Progress pause'
+
         return (
             <div className="Scrubber">
-                <div className="Scrubber-Progress"></div>
+                <div className={className}></div>
             </div>
         )
     }
@@ -100,18 +107,21 @@ class Scrubber extends React.Component {
 
 class Controls extends React.Component {
     render() {
-
         let classNames;
+        let contextIcon;
+
         if (this.props.isPlaying === 'pause') {
-            classNames = 'fa fa-fw fa-pause';
+            classNames = 'fa pause';
+            contextIcon = faPause
         } else {
-            classNames = 'fa fa-fw fa-play';
+            classNames = 'fa play';
+            contextIcon = faPlay
         }
 
         return (
             <div className="Controls">
                 <div onClick={this.props.onClick} className="Button">
-                    <i className={classNames}></i>
+                    <FontAwesomeIcon icon={contextIcon} size='2x' className={classNames} />
                 </div>
             </div>
         )

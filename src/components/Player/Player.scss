@@ -1,9 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+//@import url('node_modules/@fortawesome/fontawesome-svg-core/styles');
 
 //Colors
+$accent: rgb(0, 110, 153);
 $black: #121212;
 $white: #FFFFFF;
-$teal: rgb(0, 110, 153);
 $blue: #1D2D3A;
 
 // Mixins
@@ -116,12 +117,27 @@ audio {
         }
 
         .Scrubber-Progress {
-            @include generate-gradient($teal);
+            @include generate-gradient($accent);
             height: 100%;
             width: 0%;
             transition: width .25s ease;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
+
+            &.play {
+                height: 100%;
+
+
+                transition: height .2s ease, opacity 1s ease;
+            }
+
+            &.pause {
+                height: 500%;
+                //opacity: (.1);
+
+
+                transition: height .2s ease, opacity 1s ease;
+            }
         }
     }
 
@@ -163,24 +179,43 @@ audio {
             margin: auto;
             pointer-events: all;
 
-            &:active {
-                transform: scale(.98);
+            &:hover {
+                -webkit-transition: all 0.5s ease;
                 background: $white;
 
                 .fa {
-                    color: $teal;
+                    color: $accent;
+                    opacity: 1;
+                }
+            }
+
+            &:active {
+                transform: scale(.95);
+                background: $white;
+
+                .fa {
+                    color: $accent;
                     opacity: 1;
                 }
             }
 
             .fa {
                 color: $white;
-                opacity: .5;
+                opacity: .8;
                 font-size: 24px;
 
-                &.fa-play {
-                    margin-left: 5px;
+                &.play {
+                    opacity: 1;
+
+                    transition: all .5s ease;
                 }
+
+                &.pause {
+                    opacity: .8;
+
+                    transition: all .5s ease;
+                }
+
             }
         }
     }
