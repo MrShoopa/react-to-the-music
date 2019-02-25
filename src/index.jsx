@@ -15,10 +15,14 @@ Created by Joe Villegas in pursuit of learning
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Player from './components/Player/Player.jsx';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Player />, document.getElementById('root'));
+//import Player from './components/Player/Player.jsx';
+//import SongList from './components/Menu/SongList.jsx';
+import App from './App'
+
+ReactDOM.render(<App />, document.getElementById('root'));
+//ReactDOM.render(<Player />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
