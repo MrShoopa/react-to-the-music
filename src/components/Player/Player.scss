@@ -21,12 +21,12 @@ $blue: #1D2D3A;
 // Styles
 body {
     align-items: center;
-    background: darken($blue, 10);
     display: flex;
     font-family: 'Nunito', sans-serif;
     color: white;
     height: 100vh;
     justify-content: center;
+    transition: 1ms;
 }
 
 audio {

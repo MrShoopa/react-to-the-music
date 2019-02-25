@@ -1,4 +1,7 @@
-.App {}
+body {
+  background: -webkit-linear-gradient(top, rgba(16, 94, 158, 1) 0%, rgba(31, 56, 79, 1) 100%);
+  transition: 1ms;
+}
 
 .App-header {
   text-align: center;
@@ -6,7 +9,7 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 30s linear;
   height: 40vmin;
   pointer-events: none;
 }
