@@ -1,14 +1,14 @@
 {
-  "main.css": "/MrShoopa/react-to-the-music/static/css/main.69f2fe2e.chunk.css",
-  "main.js": "/MrShoopa/react-to-the-music/static/js/main.2931c97b.chunk.js",
-  "main.js.map": "/MrShoopa/react-to-the-music/static/js/main.2931c97b.chunk.js.map",
-  "runtime~main.js": "/MrShoopa/react-to-the-music/static/js/runtime~main.59953db1.js",
-  "runtime~main.js.map": "/MrShoopa/react-to-the-music/static/js/runtime~main.59953db1.js.map",
-  "static/js/2.513b700f.chunk.js": "/MrShoopa/react-to-the-music/static/js/2.513b700f.chunk.js",
-  "static/js/2.513b700f.chunk.js.map": "/MrShoopa/react-to-the-music/static/js/2.513b700f.chunk.js.map",
-  "index.html": "/MrShoopa/react-to-the-music/index.html",
-  "precache-manifest.d5de0ebfb985caa16749cde4d35acb8d.js": "/MrShoopa/react-to-the-music/precache-manifest.d5de0ebfb985caa16749cde4d35acb8d.js",
-  "service-worker.js": "/MrShoopa/react-to-the-music/service-worker.js",
-  "static/css/main.69f2fe2e.chunk.css.map": "/MrShoopa/react-to-the-music/static/css/main.69f2fe2e.chunk.css.map",
-  "static/media/logo.svg": "/MrShoopa/react-to-the-music/static/media/logo.fbfb7a4a.svg"
+  "main.css": "/react-to-the-music/static/css/main.69f2fe2e.chunk.css",
+  "main.js": "/react-to-the-music/static/js/main.f57db48c.chunk.js",
+  "main.js.map": "/react-to-the-music/static/js/main.f57db48c.chunk.js.map",
+  "runtime~main.js": "/react-to-the-music/static/js/runtime~main.d3e01f43.js",
+  "runtime~main.js.map": "/react-to-the-music/static/js/runtime~main.d3e01f43.js.map",
+  "static/js/2.513b700f.chunk.js": "/react-to-the-music/static/js/2.513b700f.chunk.js",
+  "static/js/2.513b700f.chunk.js.map": "/react-to-the-music/static/js/2.513b700f.chunk.js.map",
+  "index.html": "/react-to-the-music/index.html",
+  "precache-manifest.e1bbc0aaf3674a9c33790680ba5b4829.js": "/react-to-the-music/precache-manifest.e1bbc0aaf3674a9c33790680ba5b4829.js",
+  "service-worker.js": "/react-to-the-music/service-worker.js",
+  "static/css/main.69f2fe2e.chunk.css.map": "/react-to-the-music/static/css/main.69f2fe2e.chunk.css.map",
+  "static/media/logo.svg": "/react-to-the-music/static/media/logo.fbfb7a4a.svg"
 }

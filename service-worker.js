@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/MrShoopa/react-to-the-music/precache-manifest.d5de0ebfb985caa16749cde4d35acb8d.js"
+  "/react-to-the-music/precache-manifest.e1bbc0aaf3674a9c33790680ba5b4829.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/MrShoopa/react-to-the-music/index.html", {
+workbox.routing.registerNavigationRoute("/react-to-the-music/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
