@@ -4,25 +4,19 @@ class Song extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
-            id: props.song.name,
-            name: props.song.name,
-            artist: props.song.artist,
-            album: props.song.album,
-            year: props.song.year,
-            artwork: props.song.artwork,
-            duration: props.song.duration,
-            source: props.song.source
         }
     };
 
 
     render = () => {
-        return (<p>{this.state.name} - {this.state.artist}</p>)
+        return (<div onClick={this.props.onClick}>
+            <p>{this.props.song.name} - {this.props.song.artist}</p>
+        </div>)
     }
 }
 
 Song.defaultProps = {
-    track: {
+    song: {
         id: "0",
         name: "Angel Voices",
         artist: "VIRTUAL SELF",

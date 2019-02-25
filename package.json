@@ -2,6 +2,11 @@
   "name": "joes-music-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/MrShoopa/react-to-the-music",
+  "devDependencies": {
+    "gh-pages": "^1.0.0",
+    "react-scripts": "2.1.5"
+  },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.4",
     "react": "^16.8.3",
@@ -9,6 +14,8 @@
     "react-scripts": "2.1.5"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

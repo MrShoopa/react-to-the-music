@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
@@ -26,7 +26,8 @@ class Player extends React.Component {
         innerScrubber.style['width'] = percent;
     };
     togglePlay = () => {
-        //console.log(this)
+        console.log(`Playback Status: ${this.state.playStatus}`)
+
         let status = this.state.playStatus;
         let audio = document.getElementById('audio');
         if (status === 'play') {
@@ -35,7 +36,7 @@ class Player extends React.Component {
             let that = this;
             setInterval(function () {
                 let currentTime = audio.currentTime;
-                let duration = that.props.track.duration;
+                let duration = that.props.song.duration;
 
                 // Calculate percent of song
                 let percent = (currentTime / duration) * 100 + '%';
@@ -52,15 +53,15 @@ class Player extends React.Component {
     render = () => {
         return (
             <div className="Player">
-                <div className="Background" style={{ 'backgroundImage': 'url(' + this.props.track.artwork + ')' }}></div>
+                <div className="Background" style={{ 'backgroundImage': 'url(' + this.props.song.artwork + ')' }}></div>
                 <div className="Header"><div className="Title">Current track</div></div>
-                <div className="Artwork" style={{ 'backgroundImage': 'url(' + this.props.track.artwork + ')' }}></div>
-                <TrackInformation track={this.props.track} />
+                <div className="Artwork" style={{ 'backgroundImage': 'url(' + this.props.song.artwork + ')' }}></div>
+                <TrackInformation song={this.props.song} />
                 <Scrubber isPlaying={this.state.playStatus} />
                 <Controls isPlaying={this.state.playStatus} onClick={this.togglePlay} />
-                <Timestamps duration={this.props.track.duration} currentTime={this.state.currentTime} />
+                <Timestamps duration={this.props.song.duration} currentTime={this.state.currentTime} />
                 <audio id="audio">
-                    <source src={this.props.track.source} />
+                    <source src={this.props.song.source} />
                 </audio>
             </div>
         )
@@ -68,11 +69,11 @@ class Player extends React.Component {
 
 }
 Player.defaultProps = {
-    track: {
-        name: "Angel Voices",
-        artist: "VIRTUAL SELF",
-        album: "",
-        year: 2018,
+    song: {
+        name: "Some song",
+        artist: "Some arti- wait",
+        album: "How did we get here",
+        year: 3019,
         artwork: "https://m.media-amazon.com/images/I/71VJ6MxpN8L._SS500_.jpg",
         duration: 392,
         source: "https://docs.google.com/uc?id=1TD5rZhiKZzC7-uwDCaB9EABeZkGEFQkQ&export=download"
@@ -83,9 +84,9 @@ class TrackInformation extends React.Component {
     render() {
         return (
             <div className="TrackInformation">
-                <div className="Name">{this.props.track.name}</div>
-                <div className="Artist">{this.props.track.artist}</div>
-                <div className="Album">{this.props.track.album} ({this.props.track.year})</div>
+                <div className="Name">{this.props.song.name}</div>
+                <div className="Artist">{this.props.song.artist}</div>
+                <div className="Album">{this.props.song.album} ({this.props.song.year})</div>
             </div>
         )
     }
@@ -150,9 +151,6 @@ class Timestamps extends React.Component {
 
 
 // Render the UI
-ReactDOM.render(
-    <Player />,
-    document.querySelector('body')
-);
 
-export default { Player, TrackInformation, Scrubber, Controls, Timestamps }
+
+export default Player
