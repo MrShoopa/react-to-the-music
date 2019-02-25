@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 
-import Song from './Song'
+import Song from '../Song.jsx'
 import Player from '../Player/Player.jsx'
 
 import './SongList.scss'
@@ -23,7 +23,12 @@ class SongList extends React.Component {
 
 
         return this.props.songs.map((song) => (
-            <div onClick={() => this.playSong(song)}>
+            <div onClick={() => this.playSong(song)}
+                style={{
+                    height: '.3in',
+                    backgroundColor: 'teal', borderRadius: '5px',
+                    alignContent: 'center', textAlign: 'center',
+                }}>
                 <Song key={song.id} song={song} />
             </div >
         ));

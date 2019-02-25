@@ -1,10 +1,11 @@
 import React from 'react';
-//import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
+import { faPlay, faPause, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 import './Player.scss'
+import App from '../../App.jsx';
 
 // Player
 class Player extends React.Component {
@@ -15,6 +16,8 @@ class Player extends React.Component {
             currentTime: 0
         }
     };
+
+    timeStatus = 0;
 
     updateTime = (timestamp) => {
         timestamp = Math.floor(timestamp);
@@ -34,7 +37,7 @@ class Player extends React.Component {
             status = 'pause';
             audio.play();
             let that = this;
-            setInterval(function () {
+            this.timeStatus = setInterval(() => {
                 let currentTime = audio.currentTime;
                 let duration = that.props.song.duration;
 
@@ -50,11 +53,25 @@ class Player extends React.Component {
         this.setState({ playStatus: status });
 
     }
+    returnToSongList = () => {
+        if (this.state.playStatus === 'pause') this.togglePlay()
+        ReactDOM.render(<App />, document.getElementById('root'))
+
+    }
+
     render = () => {
         return (
             <div className="Player">
                 <div className="Background" style={{ 'backgroundImage': 'url(' + this.props.song.artwork + ')' }}></div>
-                <div className="Header"><div className="Title">Current track</div></div>
+                <div className="Header">
+                    <p className="fa back" onClick={this.returnToSongList}>
+                        <FontAwesomeIcon icon={faArrowLeft} size='2x' style={{ opacity: '.8' }} />
+                    </p>
+                    <div className="Title">Current track</div>
+                    <p className="fa back" onClick={() => console.log('honk honk mystery button')}>
+                        <FontAwesomeIcon icon={faArrowLeft} size='2x' style={{ opacity: '0' }} />
+                    </p>
+                </div>
                 <div className="Artwork" style={{ 'backgroundImage': 'url(' + this.props.song.artwork + ')' }}></div>
                 <TrackInformation song={this.props.song} />
                 <Scrubber isPlaying={this.state.playStatus} />
@@ -66,6 +83,11 @@ class Player extends React.Component {
             </div>
         )
     };
+
+    componentWillUnmount() {
+        console.log(`Navigating back to song list... `)
+        clearInterval(this.timeStatus);
+    }
 
 }
 Player.defaultProps = {

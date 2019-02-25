@@ -12,6 +12,7 @@ class App extends Component {
   state = {
     title: `I'm trying :'''')))))`,
     body: `Hello hello, let's jam!`,
+    list_id: 0,
     songs: [
       {
         id: 10,

@@ -14,13 +14,11 @@ Created by Joe Villegas in pursuit of learning
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Route, Link, Switch } from 'react-router=dom'
+//import { HashRouter, Route, Link, Switch } from 'react-router-dom'
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-//import Player from './components/Player/Player.jsx';
-//import SongList from './components/Menu/SongList.jsx';
 import App from './App'
 
 ReactDOM.render(<App />, document.getElementById('root'));
