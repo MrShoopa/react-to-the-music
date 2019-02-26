@@ -9,7 +9,7 @@ import userList from './resources/songlist.json'
 
 class App extends Component {
   state = {
-    title: `I'm trying :'''')))))`,
+    title: `Music App`,
     body: `Hello hello, let's jam!`,
 
     songs: userList
@@ -18,13 +18,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SongList songs={this.state.songs} />
+        <header className="Main-Header">
+          <p><b>{this.state.title}</b></p>
+        </header>
 
-        <header className="App-header">
+        <div style={{ top: '2px', height: '55vh', overflow: 'auto' }}>
+          <SongList songs={this.state.songs} />
+        </div>
+
+        <footer className="Main-Footer">
           <img src={logo} className="App-logo" alt="logo" />
           <p><b>{this.state.body}</b></p>
           <p><i>Made with love by Joe</i></p>
-        </header>
+        </footer>
       </div>
     );
   }

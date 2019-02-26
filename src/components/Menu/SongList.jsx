@@ -8,7 +8,7 @@ import Player from '../Player/Player.jsx'
 import './SongList.scss'
 
 class SongList extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props)
         this.state = {
             tentative: props.tentative
@@ -23,18 +23,17 @@ class SongList extends React.Component {
         let itemsElement = this.props.songs.map((song) => (
             <div onClick={() => this.playSong(song)}
                 style={{
-                    height: '.3in',
+                    height: '.40in', width: '90vw',
+                    margin: '5vw', display: 'inline-table',
                     backgroundColor: 'teal', borderRadius: '5px',
-                    alignContent: 'center', textAlign: 'center',
+                    textAlign: 'center',
                 }}>
                 <Song key={song.id} song={song} />
             </div >
         ));
 
 
-        return (<div style={{ top: '0', height: '200px', overflow: 'auto' }}>
-            {itemsElement}
-        </div >);
+        return itemsElement
     }
 }
 

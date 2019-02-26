@@ -19,18 +19,14 @@ $blue: #1D2D3A;
 }
 
 // Styles
-body {
-    align-items: center;
-    display: flex;
-    font-family: 'Nunito', sans-serif;
-    color: white;
-    height: 200vh;
-    justify-content: center;
-    transition: 1ms;
-}
+
 
 audio {
     display: none;
+}
+
+.root {
+    overflow: hidden;
 }
 
 .Player {
@@ -38,14 +34,14 @@ audio {
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 5px 10px -5px rgba($black, 1);
-    height: 667px;
-    position: relative;
-    width: 375px;
+    height: 100vh;
+
 
     .Background {
         width: 150%;
         height: 150%;
-        position: absolute;
+        position: fixed;
+        overflow: hidden;
         top: -25%;
         left: -25%;
         background: url(https://funkadelphia.files.wordpress.com/2012/09/odesza-summers-gone-lp.jpg);
@@ -77,8 +73,8 @@ audio {
     }
 
     .Artwork {
-        width: 300px;
-        height: 300px;
+        width: 75vmin;
+        height: 75vmin;
         background: url(https://funkadelphia.files.wordpress.com/2012/09/odesza-summers-gone-lp.jpg);
         background-size: cover;
         background-position: center center;

@@ -9,9 +9,9 @@ class Song extends React.Component {
 
 
     render = () => {
-        return (<div onClick={this.props.onClick}>
-            <p>{this.props.song.name} - {this.props.song.artist}</p>
-        </div>)
+        return (
+            <p>{this.props.song.name} - <i>{this.props.song.artist}</i></p>
+        )
     }
 }
 
