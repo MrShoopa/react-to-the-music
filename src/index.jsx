@@ -20,7 +20,17 @@ import * as serviceWorker from './serviceWorker';
 
 import App from './App'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <App />, document.getElementById('root'));
+
+document.addEventListener("DOMContentLoaded", function (event) {
+  document.body.style.animation = 'initial-screen-slide-up-empty-full 1s';
+
+});
+
+
+
+
 //ReactDOM.render(<Player />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

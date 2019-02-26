@@ -3,7 +3,17 @@
 @keyframes screen-slide-up {
     from {
         transform: translateY(20%);
-        opacity: .3;
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes screen-slide-up-empty-full {
+    from {
+        transform: translateY(20%);
+        opacity: .0;
     }
 
     to {
@@ -20,6 +30,18 @@
 
     to {
         transform: scale(1.00);
+        opacity: 1;
+    }
+}
+
+@keyframes initial-screen-slide-up-empty-full {
+    from {
+        transform: translateY(30%);
+        opacity: .0;
+    }
+
+    to {
+        transform: translateY(0%);
         opacity: 1;
     }
 }
