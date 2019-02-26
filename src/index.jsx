@@ -14,7 +14,6 @@ Created by Joe Villegas in pursuit of learning
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import { HashRouter, Route, Link, Switch } from 'react-router-dom'
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';

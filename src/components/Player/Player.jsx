@@ -9,7 +9,7 @@ import App from '../../App.jsx';
 
 // Player
 class Player extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
             playStatus: 'play',
@@ -17,7 +17,7 @@ class Player extends React.Component {
         }
     };
 
-    componentWillMount() {
+    componentDidMount() {
         document.body.style.background = "-webkit-linear-gradient(top, rgba(36,36,36,1) 0%,rgba(42,42,42,1) 12%,rgba(48,48,48,1) 25%,rgba(33,33,33,1) 39%,rgba(21,21,21,1) 50%,rgba(0,0,0,1) 51%,rgba(8,8,8,1) 60%,rgba(20,20,20,1) 76%,rgba(13,13,13,1) 91%,rgba(9,9,9,1) 100%)";
     }
 
@@ -94,7 +94,6 @@ class Player extends React.Component {
         console.log(`Navigating back to song list... `)
         clearInterval(this.timeStatus);
     }
-
 }
 Player.defaultProps = {
     song: {

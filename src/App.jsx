@@ -5,7 +5,7 @@ import './App.css';
 import SongList from './components/Menu/SongList.jsx';
 
 //  EDIT SONGS HERE
-import userList from './components/resources/songlist.json'
+import userList from './resources/songlist.json'
 
 class App extends Component {
   state = {

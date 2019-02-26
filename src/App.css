@@ -3,6 +3,10 @@ body {
   transition: 1ms;
 }
 
+.App {
+  display: grid;
+}
+
 .App-header {
   text-align: center;
   padding-top: 25px
