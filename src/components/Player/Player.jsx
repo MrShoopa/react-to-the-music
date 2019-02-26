@@ -64,7 +64,7 @@ class Player extends React.Component {
 
     render = () => {
         return (
-            <div className="Player">
+            <div className="Player" id='player'>
                 <div className="Background" style={{ 'backgroundImage': 'url(' + this.props.song.artwork + ')' }}></div>
                 <div className="Header">
                     <p className="fa back" onClick={this.returnToSongList}>

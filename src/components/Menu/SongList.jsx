@@ -8,7 +8,7 @@ import Player from '../Player/Player.jsx'
 import './SongList.scss'
 
 class SongList extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.state = {
             tentative: props.tentative
@@ -16,7 +16,11 @@ class SongList extends React.Component {
     }
 
     playSong = (song) => {
-        ReactDOM.render(<Player song={song} />, document.getElementById('root'));
+        let transitioningScreen = (<div style={{ animation: 'screen-lay-in .33s ease-out' }}>
+            <Player song={song} />
+        </div>)
+
+        ReactDOM.render(transitioningScreen, document.getElementById('root'));
     }
 
     render = () => {

@@ -1,0 +1,25 @@
+/*  App-Wide Animations */
+
+@keyframes screen-slide-up {
+    from {
+        transform: translateY(20%);
+        opacity: .3;
+    }
+
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes screen-lay-in {
+    from {
+        transform: scale(1.25);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1.00);
+        opacity: 1;
+    }
+}
