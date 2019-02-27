@@ -7,18 +7,18 @@
       "type": "image/x-icon"
     },
     {
-      "src": "/images/appicon_256.png",
+      "src": "appicon_256.png",
       "type": "image/png",
       "sizes": "256x256"
     },
     {
-      "src": "/images/appicon_512.png",
+      "src": "appicon_512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#006e99",
   "background_color": "#ffffff"
 }
