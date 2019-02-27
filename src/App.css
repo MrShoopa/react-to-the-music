@@ -12,21 +12,8 @@ body {
 }
 
 .App {
+  height: 100vh;
   display: grid;
-}
-
-.Main-Header {
-  text-align: center;
-  background: -webkit-linear-gradient(top, rgba(16, 94, 158, 1) 0%, rgba(31, 56, 79, 1) 100%);
-}
-
-.Main-Footer {
-  text-align: center;
-  position: absolute;
-  width: -webkit-fill-available;
-  bottom: 0%;
-  padding-top: 2.5vh;
-  background: -webkit-linear-gradient(top, rgba(16, 94, 158, 1) 0%, rgba(31, 56, 79, 1) 100%);
 }
 
 .App-logo {
@@ -47,4 +34,20 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* Header and Footer */
+.Main-Header {
+  text-align: center;
+  background: -webkit-linear-gradient(top, rgba(16, 94, 158, 1) 0%, rgba(31, 56, 79, 1) 100%);
+}
+
+.Main-Footer {
+  text-align: center;
+  position: relative;
+  width: -webkit-fill-available;
+  bottom: 0%;
+  padding-top: 2.5vh;
+  background: -webkit-linear-gradient(top, rgba(16, 94, 158, 1) 0%, rgba(31, 56, 79, 1) 100%);
 }
