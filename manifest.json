@@ -7,13 +7,13 @@
       "type": "image/x-icon"
     },
     {
-      "src": "/images/icons-256.svg",
-      "type": "image/svg",
+      "src": "/images/appicon_256.png",
+      "type": "image/png",
       "sizes": "256x256"
     },
     {
-      "src": "/images/icons-256.svg",
-      "type": "image/svg",
+      "src": "/images/appicon_512.png",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],
