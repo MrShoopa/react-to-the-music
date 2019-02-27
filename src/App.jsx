@@ -22,7 +22,7 @@ class App extends Component {
           <p><b>{this.state.title}</b></p>
         </header>
 
-        <div style={{ top: '2px', height: '55vh', overflow: 'auto' }}>
+        <div style={{ top: '0px', height: '', overflow: 'auto' }}>
           <SongList songs={this.state.songs} />
         </div>
 

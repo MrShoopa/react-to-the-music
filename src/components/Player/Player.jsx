@@ -9,7 +9,7 @@ import App from '../../App.jsx';
 
 // Player
 class Player extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.state = {
             playStatus: 'play',
@@ -22,7 +22,7 @@ class Player extends React.Component {
     }
 
 
-    timeStatus = 0;
+    timeVisual = 0;
 
     updateTime = (timestamp) => {
         timestamp = Math.floor(timestamp);
@@ -42,7 +42,7 @@ class Player extends React.Component {
             status = 'pause';
             audio.play();
             let that = this;
-            this.timeStatus = setInterval(() => {
+            this.timeVisual = setInterval(() => {
                 let currentTime = audio.currentTime;
                 let duration = that.props.song.duration;
 
@@ -92,7 +92,9 @@ class Player extends React.Component {
         document.body.style.background = "";
 
         console.log(`Navigating back to song list... `)
-        clearInterval(this.timeStatus);
+
+        this.currentTime = 0;
+        clearInterval(this.timeVisual);
     }
 }
 Player.defaultProps = {
