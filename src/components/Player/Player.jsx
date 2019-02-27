@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPause, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faPlay, faPause, faStepForward, faStepBackward, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 import './Player.scss'
 import App from '../../App.jsx';
@@ -58,6 +58,8 @@ class Player extends React.Component {
         this.setState({ playStatus: status });
 
     }
+
+
     returnToSongList = () => {
         ReactDOM.render(<App />, document.getElementById('root'))
     }
@@ -136,7 +138,16 @@ class Scrubber extends React.Component {
 };
 
 class Controls extends React.Component {
+    /*  Screen Transitions */
+    switchTrack = (context) => {
+        //TODO: Add track change functionality
+
+        //if (context === 'next') 
+    }
+
+
     render() {
+
         let classNames;
         let contextIcon;
 
@@ -150,8 +161,14 @@ class Controls extends React.Component {
 
         return (
             <div className="Controls">
-                <div onClick={this.props.onClick} className="Button">
+                <div onClick={this.switchTrack('previous')} className="Button Change">
+                    <FontAwesomeIcon icon={faStepBackward} size='2x' />
+                </div>
+                <div onClick={this.props.onClick} className="Button Play">
                     <FontAwesomeIcon icon={contextIcon} size='2x' className={classNames} />
+                </div>
+                <div onClick={this.switchTrack('next')} className="Button Change">
+                    <FontAwesomeIcon icon={faStepForward} size='2x' />
                 </div>
             </div>
         )

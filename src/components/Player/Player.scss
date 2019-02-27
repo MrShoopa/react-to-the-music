@@ -167,6 +167,7 @@ audio {
 
     .Controls {
         position: absolute;
+        display: flex;
         bottom: 8%;
         pointer-events: none;
         margin: auto;
@@ -174,56 +175,56 @@ audio {
         right: 0;
 
         .Button {
-            height: 75px;
-            width: 75px;
-            border: 2px solid rgba($white, .5);
-            box-sizing: border-box;
+            height: 60px;
+            width: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 75px;
-            box-shadow: 0 5px 10px 0px rgba($black, .125);
             margin: auto;
             pointer-events: all;
 
-            &:hover {
-                -webkit-transition: all 0.5s ease;
-                background: $white;
+            &.Play {
+                box-shadow: 0 5px 10px 0px rgba($black, .125);
+                border: 2px solid rgba($white, .5);
+                border-radius: 75px;
+                height: 75px;
+                width: 75px;
+                box-sizing: border-box;
 
-                .fa {
-                    color: $accent;
-                    opacity: 1;
+
+                &:hover {
+                    -webkit-transition: all 0.5s ease;
+                    background: $white;
+
+                    .fa {
+                        color: $accent;
+                        opacity: 1;
+                    }
+                }
+
+                &:active {
+                    transform: scale(.95);
+                    background: $white;
+
+                    .fa {
+                        color: $accent;
+                        opacity: 1;
+                    }
                 }
             }
 
-            &:active {
-                transform: scale(.95);
-                background: $white;
+            &.Change {
+                box-sizing: border-box;
 
-                .fa {
-                    color: $accent;
+                &:active {
+                    transform: scale(.95);
                     opacity: 1;
+                    color: gray;
                 }
             }
 
-            .fa {
-                color: $white;
-                opacity: .8;
-                font-size: 24px;
 
-                &.play {
-                    opacity: 1;
 
-                    transition: all .5s ease;
-                }
-
-                &.pause {
-                    opacity: .8;
-
-                    transition: all .5s ease;
-                }
-
-            }
         }
     }
 }
