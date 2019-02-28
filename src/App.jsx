@@ -22,9 +22,9 @@ class App extends Component {
           <p><b>{this.state.title}</b></p>
         </header>
 
-        <body style={{ top: '0px', overflow: 'auto' }}>
+        <div style={{ top: '0px', overflow: 'auto' }}>
           <SongList songs={this.state.songs} />
-        </body>
+        </div>
 
         <footer className="Main-Footer">
           <img src={logo} className="App-logo" alt="logo" />

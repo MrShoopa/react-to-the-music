@@ -5,15 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPause, faStepForward, faStepBackward, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 import './Player.scss'
-import App from '../../App.jsx';
+import songlist from '../../resources/songlist.json'
 
+import App from '../../App.jsx';
 // Player
 class Player extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
             playStatus: 'play',
-            currentTime: 0
+            currentTime: 0,
+
+            song: props.song
         }
     };
 
@@ -44,7 +47,7 @@ class Player extends React.Component {
             let that = this;
             this.timeVisual = setInterval(() => {
                 let currentTime = audio.currentTime;
-                let duration = that.props.song.duration;
+                let duration = that.state.song.duration;
 
                 // Calculate percent of song
                 let percent = (currentTime / duration) * 100 + '%';
@@ -59,6 +62,31 @@ class Player extends React.Component {
 
     }
 
+    /*  Screen Transitions */
+    switchTrack = (context) => {
+        //TODO: Add track change functionality
+        var index = songlist.findIndex((id) => {
+            return id === this.state.song.id
+            console.log(`Found song with id of ${id}`)
+
+            return -1
+        });
+
+        if (context === 'previous') {
+            console.log('OY!')
+
+            index--;
+        }
+        if (context === 'next') {
+            console.log('YO!')
+
+            index++;
+        }
+
+
+        console.log(index)
+        this.setState({ song: songlist[index] })
+    }
 
     returnToSongList = () => {
         ReactDOM.render(<App />, document.getElementById('root'))
@@ -77,13 +105,14 @@ class Player extends React.Component {
                         <FontAwesomeIcon icon={faArrowLeft} size='2x' style={{ opacity: '0' }} />
                     </p>
                 </div>
-                <div className="Artwork" style={{ 'backgroundImage': 'url(' + this.props.song.artwork + ')' }}></div>
-                <TrackInformation song={this.props.song} />
+                <div className="Artwork" style={{ 'backgroundImage': 'url(' + this.state.song.artwork + ')' }}></div>
+                <TrackInformation song={this.state.song} />
                 <Scrubber isPlaying={this.state.playStatus} />
-                <Controls isPlaying={this.state.playStatus} onClick={this.togglePlay} />
-                <Timestamps duration={this.props.song.duration} currentTime={this.state.currentTime} />
+                <Controls isPlaying={this.state.playStatus}
+                    onClick={{ togglePlay: this.togglePlay, switchTrack: this.switchTrack }} />
+                <Timestamps duration={this.state.song.duration} currentTime={this.state.currentTime} />
                 <audio id="audio">
-                    <source src={this.props.song.source} />
+                    <source src={this.state.song.source} />
                 </audio>
             </div>
         )
@@ -138,16 +167,8 @@ class Scrubber extends React.Component {
 };
 
 class Controls extends React.Component {
-    /*  Screen Transitions */
-    switchTrack = (context) => {
-        //TODO: Add track change functionality
-
-        //if (context === 'next') 
-    }
-
 
     render() {
-
         let classNames;
         let contextIcon;
 
@@ -161,13 +182,13 @@ class Controls extends React.Component {
 
         return (
             <div className="Controls">
-                <div onClick={this.switchTrack('previous')} className="Button Change">
+                <div onClick={() => this.props.onClick.switchTrack('previous')} className="Button Change">
                     <FontAwesomeIcon icon={faStepBackward} size='2x' />
                 </div>
-                <div onClick={this.props.onClick} className="Button Play">
+                <div onClick={this.props.onClick.togglePlay} className="Button Play">
                     <FontAwesomeIcon icon={contextIcon} size='2x' className={classNames} />
                 </div>
-                <div onClick={this.switchTrack('next')} className="Button Change">
+                <div onClick={() => this.props.onClick.switchTrack('next')} className="Button Change">
                     <FontAwesomeIcon icon={faStepForward} size='2x' />
                 </div>
             </div>
