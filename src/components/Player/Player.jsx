@@ -13,7 +13,7 @@ class Player extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            playStatus: 'play',
+            playStatus: 'pause',
             currentTime: 0,
 
             song: props.song
@@ -25,8 +25,8 @@ class Player extends React.Component {
     }
 
 
+    /*  Visualizations  */
     timeVisual = 0;
-
     updateTime = (timestamp) => {
         timestamp = Math.floor(timestamp);
         this.setState({ currentTime: timestamp });
@@ -36,13 +36,16 @@ class Player extends React.Component {
         let innerScrubber = document.querySelector('.Scrubber-Progress');
         innerScrubber.style['width'] = percent;
     };
-    togglePlay = () => {
-        console.log(`Playback Status: ${this.state.playStatus}`)
+
+    /*  Media Control functions */
+    //  Toggles playback of current track. (Optionally force to play setting hotSwap to 'force)
+    togglePlay = (hotSwap = 'none') => {
+        console.log(`Playback status before: ${this.state.playStatus}`)
 
         let status = this.state.playStatus;
         let audio = document.getElementById('audio');
-        if (status === 'play') {
-            status = 'pause';
+        if (status === 'pause' || hotSwap === 'force') {
+            status = 'play';
             audio.play();
             let that = this;
             this.timeVisual = setInterval(() => {
@@ -55,47 +58,64 @@ class Player extends React.Component {
                 that.updateTime(currentTime);
             }, 100);
         } else {
-            status = 'play';
+            status = 'pause';
             audio.pause();
         }
         this.setState({ playStatus: status });
 
     }
+    stopAudio = () => {
+        //  If music isn't already paused
+        if (this.state.playStatus === 'play') this.togglePlay()
 
-    /*  Screen Transitions */
+        let audio = document.getElementById('audio');
+        audio.currentTime = 0;
+        this.updateScrubber(0);
+        this.updateTime(0);
+    }
+
+    /*  Screen Transitions  */
     switchTrack = (context) => {
-        //TODO: Add track change functionality
-        var index = songlist.findIndex((id) => {
-            return id === this.state.song.id
-            console.log(`Found song with id of ${id}`)
-
-            return -1
+        var index = songlist.findIndex((matched_id) => {
+            console.log(matched_id)
+            return matched_id.id === this.state.song.id
         });
 
         if (context === 'previous') {
-            console.log('OY!')
+            console.log('Previous song')
 
-            index--;
+            index = (index - 1 === -1) ? songlist.length - 1 : index - 1;
         }
         if (context === 'next') {
-            console.log('YO!')
+            console.log('Next song')
 
-            index++;
+            index = (index + 1 === songlist.length) ? 0 : index + 1;
         }
 
+        //  Stop music ahead of switch
+        let previousPlayState = this.state.playStatus
+        this.stopAudio();
 
-        console.log(index)
+        //  Update to new source
+        console.log(`Switched to song with id of ${songlist[index].id}`)
         this.setState({ song: songlist[index] })
+        let audio = document.getElementById('audio');
+        audio.src = songlist[index].source
+
+        //  Plays next song if music player was already playing
+        if (previousPlayState === 'play') this.togglePlay('force');
     }
+
 
     returnToSongList = () => {
         ReactDOM.render(<App />, document.getElementById('root'))
     }
 
+    /*  Render  */
     render = () => {
         return (
             <div className="Player" id='player'>
-                <div className="Background" style={{ 'backgroundImage': 'url(' + this.props.song.artwork + ')' }}></div>
+                <div className="Background" style={{ 'backgroundImage': 'url(' + this.state.song.artwork + ')' }}></div>
                 <div className="Header">
                     <p className="fa back" onClick={this.returnToSongList}>
                         <FontAwesomeIcon icon={faArrowLeft} size='2x' style={{ opacity: '.8' }} />
@@ -119,7 +139,7 @@ class Player extends React.Component {
     };
 
     componentWillUnmount() {
-        if (this.state.playStatus === 'pause') this.togglePlay()
+        if (this.state.playStatus === 'play') this.togglePlay()
         document.body.style.background = "";
 
         console.log(`Navigating back to song list... `)
@@ -155,7 +175,7 @@ class TrackInformation extends React.Component {
 class Scrubber extends React.Component {
     render() {
         let className;
-        className = this.props.isPlaying === 'pause' ?
+        className = this.props.isPlaying === 'play' ?
             'Scrubber-Progress play' : 'Scrubber-Progress pause'
 
         return (
@@ -172,7 +192,7 @@ class Controls extends React.Component {
         let classNames;
         let contextIcon;
 
-        if (this.props.isPlaying === 'pause') {
+        if (this.props.isPlaying === 'play') {
             classNames = 'fa pause';
             contextIcon = faPause
         } else {
