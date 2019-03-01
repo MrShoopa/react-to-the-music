@@ -8,7 +8,7 @@ import Player from '../Player/Player.jsx'
 import './SongList.scss'
 
 class SongList extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props)
         this.state = {
             tentative: props.tentative

@@ -5,17 +5,21 @@ import './App.css';
 import SongList from './components/Menu/SongList.jsx';
 
 //  EDIT SONGS HERE
-import userList from './resources/songlist.json'
+import playlist from './resources/personal_list.json'
 
 class App extends Component {
-  state = {
-    title: `Music App`,
-    body: `Hello hello, let's jam!`,
+  constructor (props) {
+    super(props)
+    this.state = {
+      title: `Music App`,
+      body: `Hello hello, let's jam!`,
 
-    songs: userList
+      songs: playlist.songs,
+      listID: Math.random()
+    }
   }
 
-  render() {
+  render = () => {
     return (
       <div className="App">
         <header className="Main-Header">
@@ -23,7 +27,7 @@ class App extends Component {
         </header>
 
         <div style={{ top: '0px', overflow: 'auto' }}>
-          <SongList songs={this.state.songs} />
+          <SongList key={playlist.id} songs={this.state.songs} />
         </div>
 
         <footer className="Main-Footer">

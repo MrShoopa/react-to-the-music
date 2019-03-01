@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPause, faStepForward, faStepBackward, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 import './Player.scss'
-import songlist from '../../resources/songlist.json'
+import playlist from '../../resources/personal_list.json'
 
 import App from '../../App.jsx';
 // Player
@@ -79,7 +79,7 @@ class Player extends React.Component {
 
     /*  Screen Transitions  */
     switchTrack = (context) => {
-        var index = songlist.findIndex((matched_id) => {
+        var index = playlist.songs.findIndex((matched_id) => {
             console.log(matched_id)
             return matched_id.id === this.state.song.id
         });
@@ -87,12 +87,12 @@ class Player extends React.Component {
         if (context === 'previous') {
             console.log('Previous song')
 
-            index = (index - 1 === -1) ? songlist.length - 1 : index - 1;
+            index = (index - 1 === -1) ? playlist.songs.length - 1 : index - 1;
         }
         if (context === 'next') {
             console.log('Next song')
 
-            index = (index + 1 === songlist.length) ? 0 : index + 1;
+            index = (index + 1 === playlist.songs.length) ? 0 : index + 1;
         }
 
         //  Stop music ahead of switch
@@ -100,10 +100,10 @@ class Player extends React.Component {
         this.stopAudio();
 
         //  Update to new source
-        console.log(`Switched to song with id of ${songlist[index].id}`)
-        this.setState({ song: songlist[index] })
+        console.log(`Switched to song with id of ${playlist.songs[index].id}`)
+        this.setState({ song: playlist.songs[index] })
         let audio = document.getElementById('audio');
-        audio.src = songlist[index].source
+        audio.src = playlist.songs[index].source
 
         //  Plays next song if music player was already playing
         if (previousPlayState === 'play') this.togglePlay('force');

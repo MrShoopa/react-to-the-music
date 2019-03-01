@@ -21,7 +21,7 @@ import * as serviceWorker from './serviceWorker';
 import App from './App'
 
 ReactDOM.render(
-  <App />, document.getElementById('root'));
+  <App key={"initial"} />, document.getElementById('root'));
 
 document.addEventListener("DOMContentLoaded", function (event) {
   document.body.style.animation = 'initial-screen-slide-up-empty-full 1s';
