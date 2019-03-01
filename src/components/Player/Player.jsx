@@ -70,8 +70,11 @@ class Player extends React.Component {
 
         let audio = document.getElementById('audio');
         audio.currentTime = 0;
+
         this.updateScrubber(0);
         this.updateTime(0);
+
+        clearInterval(this.timeVisual);
     }
 
     /*  Screen Transitions  */
